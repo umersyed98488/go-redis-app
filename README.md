@@ -4,6 +4,7 @@
 
 ### Passing enviroment variables to the applications using env in container spec
 
+
 ```
 # deploy the application, redis and services
 
