@@ -45,10 +45,10 @@ jobs:
       
       - name: update kubeconfig
         run: | 
-           aws eks update-kubeconfig --region ap-south-1  --name eks-cluster
+          aws eks update-kubeconfig --region ap-south-1  --name eks-cluster
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'ap-south-1'
 
       - name: Switch to staging cluster
@@ -63,6 +63,6 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.run_id }}
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'ap-south-1'
 
