@@ -13,7 +13,7 @@ on:
     branches: [ master ]
 
 env:
-  repo: vedantdevops
+  repo: vedantdevops # your repo name
   imge: go-redis-app
 
 jobs:
@@ -49,28 +49,28 @@ jobs:
           push: true
           tags: vedantdevops/go-redis-app:${{ github.run_id }}
 
-      - name: update kubeconfig
-        run: |
-          aws eks --region ap-south-1 update-kubeconfig --name eks-cluster
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-          AWS_DEFAULT_REGION: 'ap-south-1'
+      # - name: update kubeconfig
+      #   run: |
+      #     aws eks --region ap-south-1 update-kubeconfig --name eks-cluster
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+      #     AWS_DEFAULT_REGION: 'ap-south-1'
 
-      - name: Switch to staging cluster
-        uses: swdotcom/update-and-apply-kubernetes-configs@v1
-        with:
-          k8-config-file-paths: |
-            manifests/redis-master.yml
-            manifests/redis-configmap.yml
-            manifests/go-redis-svc.yml
-            manifests/go-redis-app.yml
-          replacement-method: defined
-        env:
-          IMAGE_TAG: ${{ github.run_id }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-          AWS_DEFAULT_REGION: 'ap-south-1'
+      # - name: Switch to staging cluster
+      #   uses: swdotcom/update-and-apply-kubernetes-configs@v1
+      #   with:
+      #     k8-config-file-paths: |
+      #       manifests/redis-master.yml
+      #       manifests/redis-configmap.yml
+      #       manifests/go-redis-svc.yml
+      #       manifests/go-redis-app.yml
+      #     replacement-method: defined
+      #   env:
+      #     IMAGE_TAG: ${{ github.run_id }}
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+      #     AWS_DEFAULT_REGION: 'ap-south-1'
 
 
 
