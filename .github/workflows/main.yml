@@ -44,8 +44,8 @@ jobs:
           tags: vedantdevops/go-redis-app:${{ github.run_id }}
       
       - name: update kubeconfig
-        run: |
-          aws eks update-kubeconfig --region ap-south-1  --name eks-cluster
+        run: | 
+           aws eks update-kubeconfig --region ap-south-1  --name eks-cluster
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ID }}
