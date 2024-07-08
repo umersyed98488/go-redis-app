@@ -31,7 +31,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: umersyed98488/go-redis-app
+          images: syedumer17/go-redis-app
           
       - name: echo step variables
         run: echo "${{ github.run_id }}"
@@ -41,4 +41,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: umersyed98488/go-redis-app:${{ github.run_id }}
+          tags: syedumer17/go-redis-app:${{ github.run_id }}
